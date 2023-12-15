@@ -52,3 +52,17 @@ surveys = {
     "satisfaction": satisfaction_survey,
     "personality": personality_quiz,
 }
+
+# x = surveys["satisfaction"]
+# print(x.title)
+# print(x.instructions)
+# for q in x.questions:
+#     # print(q.question)
+#     a = Question(q.question, q.choices)
+
+# for i in surveys["satisfaction"].questions:
+    # print(i.question)
+    # Question(q.question, q.choices)
+# print(surveys["satisfaction"].question)
+x = surveys["personality"].questions
+print(len(x))

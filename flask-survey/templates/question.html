@@ -1,0 +1,17 @@
+{% extends 'base.html' %} {% block title %}Questions{% endblock %} {% block
+content %}
+<form action="/{{type}}/questions/{{num_id}}" method="post">
+  <p>{{question_set.question}}</p>
+  <div>
+    {% for choice in question_set.choices %}
+    <input type="radio" id="choice" name="choice" value="{{choice}}" />
+    <label for="choice">{{choice}}</label>
+    {% endfor %} {% if question_set.allow_text == true %}
+    <br />
+    <textarea name="input_text" id="input_text" cols="30" rows="10"></textarea>
+    {% endif %}
+  </div>
+  <button>Next</button>
+</form>
+
+{% endblock %}

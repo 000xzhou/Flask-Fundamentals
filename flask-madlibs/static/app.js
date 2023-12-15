@@ -54,7 +54,7 @@ function sendDataToPython(story_title) {
 
   // Use fetch API to send data
   fetch(url, {
-    method: "POST", // or 'PUT'
+    method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
@@ -68,3 +68,29 @@ function sendDataToPython(story_title) {
       console.error("Error:", error);
     });
 }
+
+// checks story form inputs
+//! Does not work....
+document
+  .getElementById("story_form")
+  .addEventListener("submit", function (event) {
+    event.preventDefault();
+    let inputs = this.querySelectorAll('input[type="text"]');
+    allInputsValid = false;
+    for (let i = 0; i < inputs.length; i++) {
+      print(inputs[i]);
+      if (inputs[i].value.trim() == "") {
+        alert("Please fill in all the fields.");
+        break;
+      } else if (inputs[i].value.trim().length < 3) {
+        alert("Must be 3 chars or more.");
+        break;
+      } else {
+        allInputsValid = true;
+      }
+    }
+    // If all inputs have values and meet the length requirement, the form will be submitted
+    if (allInputsValid) {
+      this.submit();
+    }
+  });

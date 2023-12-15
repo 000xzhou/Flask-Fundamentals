@@ -1,0 +1,6 @@
+{% extends 'base.html' %} {% block title %}Personality Quiz{% endblock %} {%
+block content %}
+<h2>{{survey.title}}</h2>
+<p>{{survey.instructions}}</p>
+<a href="/personality_quiz/questions/0" id="startBtn" class="button">Start</a>
+{% endblock %}
