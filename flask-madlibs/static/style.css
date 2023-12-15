@@ -55,3 +55,12 @@ p {
 #story_id {
   display: none;
 }
+
+#pharagrapth {
+  display: flex;
+  gap: 1rem;
+}
+
+.make_own_story_name {
+  padding: 1rem;
+}

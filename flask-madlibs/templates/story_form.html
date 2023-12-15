@@ -8,16 +8,10 @@ content %}
     name="story_value"
     value="{{selected_story}}"
   />
-  <label for="place">place: </label>
-  <input type="text" id="place" name="place" />
-  <label for="noun">noun: </label>
-  <input type="text" id="noun" name="noun" />
-  <label for="verb">verb: </label>
-  <input type="text" id="verb" name="verb" />
-  <label for="adjective">adjective: </label>
-  <input type="text" id="adjective" name="adjective" />
-  <label for="plural_noun">plural noun: </label>
-  <input type="text" id="plural_noun" name="plural_noun" />
+  {% for word in words_list %}
+  <label for="{{word}}"> {{word.replace('_', ' ')}}: </label>
+  <input type="{{word}}" id="{{word}}" name="{{word}}" />
+  {% endfor %}
   <button type="submit">submit words</button>
 </form>
 {% endblock %}

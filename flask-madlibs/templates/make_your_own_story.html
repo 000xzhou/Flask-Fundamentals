@@ -1,17 +1,21 @@
 {% extends 'base.html' %} {% block title %}Make your own{% endblock %} {% block
 content %}
 <h1>Make your own story</h1>
-<form action="/own_story_lines" method="post">
-  <label for="story_name:">name your story:</label>
-  <input type="text" name="story_name" />
-  <label for="line-1:">line 1:</label>
-  <input type="text" name="line-1" />
-  <label for="line-2:">line 2:</label>
-  <input type="text" name="line-2" />
-  <label for="line-3:">line 3:</label>
-  <input type="text" name="line-3" />
-  <label for="line-4:">line 4:</label>
-  <input type="text" name="line-4" />
-  <button type="submit">submit story</button>
+<p>Use add line to add . or , etc in the ends</p>
+<form action="" method="post" id="form_item">
+  <div>
+    <input type="text" id="myLine" placeholder="Line..." />
+    <span onclick="newElement('myLine')" class="addBtn">Add Line</span>
+  </div>
+  <div>
+    <input type="text" id="myKey" placeholder="key..." />
+    <span onclick="newElement('myKey')" class="addBtn">Add Key</span>
+  </div>
 </form>
+<div class="make_own_story_name">
+  <label for="story_name:">name your story:</label>
+  <input type="text" name="story_name" id="story_title" />
+  <p id="pharagrapth"></p>
+  <button id="submit_own_story">Submit Your Story</button>
+</div>
 {% endblock %}
