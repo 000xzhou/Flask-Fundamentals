@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}TITLE GOES HERE{% endblock %}</title>
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body>
+    <nav>
+      <a href="/" target="_blank" rel="noopener noreferrer">Home</a>
+      <a href="/make_your_own_story" target="_blank" rel="noopener noreferrer"
+        >Make your own story</a
+      >
+    </nav>
+    {% block content %}BODY CONTENT GOES HERE{% endblock %}
+    <script src="/static/app.js"></script>
+  </body>
+</html>

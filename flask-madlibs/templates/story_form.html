@@ -1,0 +1,23 @@
+{% extends 'base.html' %} {% block title %}Story 1{% endblock %} {% block
+content %}
+<h1>Story Template 1</h1>
+<form action="/story" method="post" id="story_form">
+  <input
+    type="text"
+    id="story_id"
+    name="story_value"
+    value="{{selected_story}}"
+  />
+  <label for="place">place: </label>
+  <input type="text" id="place" name="place" />
+  <label for="noun">noun: </label>
+  <input type="text" id="noun" name="noun" />
+  <label for="verb">verb: </label>
+  <input type="text" id="verb" name="verb" />
+  <label for="adjective">adjective: </label>
+  <input type="text" id="adjective" name="adjective" />
+  <label for="plural_noun">plural noun: </label>
+  <input type="text" id="plural_noun" name="plural_noun" />
+  <button type="submit">submit words</button>
+</form>
+{% endblock %}

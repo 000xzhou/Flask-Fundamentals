@@ -1,0 +1,57 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+nav {
+  padding: 1rem;
+  background-color: black;
+}
+nav a {
+  color: white;
+  text-decoration: none;
+  padding: 1rem;
+}
+nav a:hover {
+  background-color: cyan;
+  color: black;
+}
+body {
+  background-color: lightgray;
+}
+form {
+  padding: 1rem;
+}
+label {
+  font-size: 1rem;
+}
+input {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+input[type="submit"],
+button {
+  color: white;
+  background-color: black;
+  padding: 1rem;
+}
+input[type="submit"]:hover,
+button:hover {
+  background-color: cyan;
+  color: black;
+  border: none;
+}
+input[type="submit"] {
+  margin-top: 1rem;
+}
+h1 {
+  padding: 1rem;
+}
+
+p {
+  font-size: 2rem;
+  padding: 1rem;
+}
+#story_id {
+  display: none;
+}

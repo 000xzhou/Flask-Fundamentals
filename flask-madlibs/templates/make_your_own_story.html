@@ -1,0 +1,17 @@
+{% extends 'base.html' %} {% block title %}Make your own{% endblock %} {% block
+content %}
+<h1>Make your own story</h1>
+<form action="/own_story_lines" method="post">
+  <label for="story_name:">name your story:</label>
+  <input type="text" name="story_name" />
+  <label for="line-1:">line 1:</label>
+  <input type="text" name="line-1" />
+  <label for="line-2:">line 2:</label>
+  <input type="text" name="line-2" />
+  <label for="line-3:">line 3:</label>
+  <input type="text" name="line-3" />
+  <label for="line-4:">line 4:</label>
+  <input type="text" name="line-4" />
+  <button type="submit">submit story</button>
+</form>
+{% endblock %}

@@ -37,9 +37,37 @@ class Story:
 
 # Here's a story to get you started
 
-
-story = Story(
-    ["place", "noun", "verb", "adjective", "plural_noun"],
-    """Once upon a time in a long-ago {place}, there lived a
-       large {adjective} {noun}. It loved to {verb} {plural_noun}."""
-)
+story_templates = {
+    "story-1": Story(
+        ["place", "noun", "verb", "adjective", "plural_noun"],
+        """Once upon a time in a long-ago {place}, there lived a
+           large {adjective} {noun}. It loved to {verb} {plural_noun}."""
+    ),
+    "story-2": Story(
+        ["place", "noun", "verb", "adjective", "plural_noun"],
+        """I live in {place}, I lived in a
+       {adjective} {noun}. I loved to {verb} {plural_noun}."""
+    ),
+    "story-3": Story(
+        ["place", "noun", "verb", "adjective", "plural_noun"],
+        """In the world of {place}, there lived a
+        {adjective} {noun}. It loved to {verb} {plural_noun}."""
+    )
+}
+# story1 = Story(
+#     ["place", "noun", "verb", "adjective", "plural_noun"],
+#     """Once upon a time in a long-ago {place}, there lived a
+#        large {adjective} {noun}. It loved to {verb} {plural_noun}."""
+# )
+# story2 = Story(
+#     ["place", "noun", "verb", "adjective", "plural_noun"],
+#     """I live in {place}, I lived in a
+#        {adjective} {noun}. I loved to {verb} {plural_noun}."""
+# )
+# story3 = Story(
+#     ["place", "noun", "verb", "adjective", "plural_noun"],
+#     """In the world of {place}, there lived a
+#     {adjective} {noun}. It loved to {verb} {plural_noun}."""
+# )
+# x = story.generate({"place": "china", "verb": "happy", "adjective": "fun", "plural_noun": "funny", "noun":"chicken"})
+# print(x)
