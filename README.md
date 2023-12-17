@@ -8,7 +8,11 @@ finish
 
 finish
 
-## Flask Tools: Survey
+## Flask Tools / Session Exercise: Survey
 
 finish 1-5
-still need 6-8
+finish 6-8
+
+## Flask Boggle
+
+## Problem Solving - Divide and Conquer
