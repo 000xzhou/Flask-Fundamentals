@@ -1,5 +1,5 @@
 function findRotatedIndex() {
- 
+  console.log("ESfres");
 }
 
-module.exports = findRotatedIndex
+module.exports = findRotatedIndex;
