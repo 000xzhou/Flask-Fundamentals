@@ -3,14 +3,13 @@ class GuessingGame {
     this.guessForm = document.getElementById("guess");
     this.listOfWords = document.getElementById("listOfWords");
     this.scoreItem = document.getElementById("score");
-    this.bestscore = document.getElementById("bestscore");
+    this.bestscoreDoc = document.getElementById("bestscore");
+    this.totalGames = document.getElementById("totalGames");
     this.timerItem = document.getElementById("timer");
     this.submitButton = document.getElementById("submit-button");
     this.guessInput = document.getElementById("guess-word");
-    this.score = [];
-    this.bestScore = 0;
-    // this.timeLeft = 60;
-    this.timeLeft = 5;
+    this.score = new Set();
+    this.timeLeft = 60;
 
     this.guessForm.addEventListener("submit", this.handleSubmit.bind(this));
     this.startTimer();
@@ -40,7 +39,7 @@ class GuessingGame {
       body: jsonData,
     })
       .then((response) => response.json())
-      .then((responseData) => this.handleScoring(responseData))
+      .then((responseData) => this.handleScoreData(responseData))
       .catch((error) => {
         alert(`Error: ${error}`);
         console.error("Error:", error);
@@ -84,51 +83,55 @@ class GuessingGame {
     console.log("Success:", data);
     let li = document.createElement("li");
     li.textContent = `${guessWord}: ${data.result}`;
-    this.listOfWords.appendChild(li);
-
+    if (this.listOfWords.children.length < 10) {
+      this.listOfWords.prepend(li); // add to top of list
+    } else {
+      this.listOfWords.removeChild(this.listOfWords.lastChild);
+      this.listOfWords.prepend(li); // add to top of list
+    }
     if (data.result === "ok") {
-      this.score.push(guessWord);
+      this.score.add(guessWord);
     }
 
-    this.scoreItem.textContent = this.score.length;
-    console.log(this.score);
+    this.scoreItem.textContent = this.score.size;
   }
-  handleScoring(responseData) {
+  handleScoreData(responseData) {
     console.log("Success:", responseData);
-    const scoreData = responseData.scoreData;
-    const newGameBoard = responseData.newGameBoard;
-    handleScoreData(scoreData);
-    // updateBoard(newGameBoard);
+    this.bestscoreDoc.textContent = responseData.best_score;
+    this.totalGames.textContent = responseData.total_games;
   }
-  handleScoreData(scoreData) {
-    if (this.bestScore < scoreData.score) {
-      this.bestScore = scoreData.score;
-      bestscore.textContent = this.bestScore;
-    }
-  }
-  updateBoard(newGameBoard) {
-    console.log(newGameBoard);
-    for (let letters in newGameBoard) {
-      for (let letter in letters) {
-        const letterDoc = document.getElementById("letter");
-        letterDoc.textContent = letter;
-      }
-    }
-  }
-  startGame() {
-    this.score = [];
-    // this.timeLeft = 60;
-    this.timeLeft = 5;
+  startGame(bestScore, totalGames) {
+    this.score = new Set();
+    this.timeLeft = 60;
     this.guessInput.disabled = false;
     this.submitButton.disabled = false;
     this.listOfWords.innerHTML = "";
     this.scoreItem.textContent = "0";
     this.timerItem.textContent = `Time Left: 60s`;
+    this.totalGames.textContent = totalGames;
+    this.bestscoreDoc.textContent = bestScore;
     clearInterval(this.timerInterval);
     this.startTimer();
   }
 }
+fetch("/start", {
+  method: "GET",
+  headers: { "Content-Type": "application/json" },
+})
+  .then((response) => response.json())
+  .then((responseData) => {
+    let best = responseData.best_score;
+    let total = responseData.total_games;
+    // Instantiate the class
+    const game = new GuessingGame();
+    game.startGame(best, total);
+  })
+  .catch((error) => {
+    alert(`Error: ${error}`);
+    console.error("Error:", error);
+  });
 
-// Instantiate the class
-const game = new GuessingGame();
-game.startGame();
+startBtn = document.getElementById("start-button");
+startBtn.addEventListener("click", () => {
+  window.location.reload();
+});
