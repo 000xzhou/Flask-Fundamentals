@@ -1,0 +1,23 @@
+{% extends 'base.html' %} {% block title %}Boggle{% endblock %} {% block content
+%}{% for letters in game_board %}
+<div>
+  {% for letter in letters %}
+  <span id="letter">{{letter}}</span>
+  {% endfor %}
+</div>
+{% endfor %}
+<form action="/" method="post" id="guess">
+  <label for="word">word: </label>
+  <input
+    type="text"
+    id="guess-word"
+    name="guess-word"
+    placeholder="enter your guess..."
+  />
+  <button type="submit" id="submit-button">Submit</button>
+</form>
+<div id="timer"></div>
+<div >Best Score: <span id="bestscore">0<span></div>
+<div>score: <span id="score">0</span></div>
+<ul id="listOfWords"></ul>
+{% endblock %}
