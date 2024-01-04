@@ -29,10 +29,8 @@ class GuessingGame {
     // Disable the input and submit button, or any other logic you want
     this.guessInput.disabled = true;
     this.submitButton.disabled = true;
-
-    const data = { score: this.score.length };
+    const data = { score: this.score.size };
     const jsonData = JSON.stringify(data);
-
     fetch("/score", {
       method: "POST",
       headers: { "Content-Type": "application/json" },

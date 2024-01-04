@@ -12,8 +12,13 @@ with open('words.txt') as file:
 
 @app.route('/', methods=['GET','POST'])
 def index():
-    game_board = boggle_game.make_board()
-    session['game'] = game_board
+    # game_board = boggle_game.make_board()
+    if request.method == 'GET':
+        game_board = boggle_game.make_board()
+        session['game'] = game_board
+    else:
+        game_board = session.get('game')
+    # session['game'] = game_board
     if request.method == 'POST':
         data = request.get_json()
         #! why make me check if it's in words if the function check_valid_word does it already?
@@ -31,12 +36,13 @@ def index():
 def receive_score():
     if 'recent_scores' not in session:
         session['recent_scores'] = []
-    if 'game_stats' not in session:
-        session["game_stats"] = {"best_score":0, "total_games":0}
+    # if 'game_stats' not in session:
+    #     session["game_stats"] = {"best_score":0, "total_games":0}
         
         
     data = request.get_json()
     
+    # currently not using recent_score
     if len(session["recent_scores"]) < 7:
         session["recent_scores"] = session["recent_scores"] + [data["score"]]
     else:
@@ -55,6 +61,8 @@ def receive_score():
     return jsonify(scores)
 @app.route('/start')
 def start():
+    if "game_stats" not in session:
+        session["game_stats"] = {"best_score":0, "total_games":0}
 
     return session["game_stats"]
 
